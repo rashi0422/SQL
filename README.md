@@ -1,1 +1,1 @@
-# MYSQL-Case-Study
+# MYSQL - Projects 
