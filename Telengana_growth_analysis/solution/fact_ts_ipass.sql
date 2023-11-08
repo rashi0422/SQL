@@ -1,6 +1,7 @@
 SELECT * FROM telangana_growth.fact_ts_ipass;
 
 # 1.List down the top 5 sectors that have witnessed the most significant investments in FY 2022.
+
 select sector, round(sum(Investment_in_cr),2) as 'Total_investment'
 from fact_ts_ipass f
 join dim_date d
@@ -11,7 +12,8 @@ order by Total_investment desc
 limit 5 ;
 
 # 2. List down the top 3 districts that have attracted the most significant sector investments during FY 2019 to 2022? What factors could have
-# led to the substantial investments in these particular districts?
+led to the substantial investments in these particular districts?
+
 select district, round(sum(Investment_in_cr),2) as 'Total_investment_in_cr'
 from fact_ts_ipass f
 join dim_date d
@@ -23,9 +25,9 @@ order by Total_investment_in_cr desc
 limit 3 ;
 
 
-# 3. Is there any relationship between district investments, vehicles
-#sales and stamps revenue within the same district between FY 2021 and 2022?
-with Output1 as (select district,round(sum(investment_in_cr),2) as 'Investment_in_cr'
+# 3. Is there any relationship between district investments, vehicles sales and stamps revenue within the same district between FY 2021 and 2022?
+
+ with Output1 as (select district,round(sum(investment_in_cr),2) as 'Investment_in_cr'
 from fact_ts_ipass f 
 join dim_date d 
 on f.month = d.month
@@ -58,6 +60,7 @@ join output2 B on A.district = B.district
 join output3 C on A.district = C.district ;
 
 # 4. Are there any particular sectors that have shown substantial investment in multiple districts between FY 2021 and 2022?
+
 select sector,count(distinct district) as 'districts', round(sum(investment_in_cr),2) as 'total_investment_in_cr'
 from fact_ts_ipass f 
 join dim_districts d 
@@ -67,7 +70,8 @@ order by total_investment_in_cr desc
 limit 10;
 
 # 5. Can we identify any seasonal patterns or cyclicality in the investment trends for specific sectors? Do certain sectors
- # experience higher investments during particular months?
+experience higher investments during particular months?
+
 select sector,mmm,round(sum(investment_in_cr),2) as 'total_investment_cr' 
 from fact_ts_ipass f 
 join dim_date d
