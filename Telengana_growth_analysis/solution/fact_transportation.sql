@@ -1,7 +1,8 @@
 SELECT * FROM telangana_growth.fact_transport;
 
 # 1. Investigate whether there is any correlation between vehicle sales and specific months or seasons in different districts. Are there any months
-# or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only)
+or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only)
+
 select district,mmm,sum(fuel_type_petrol) as 'vehicle_sales'
 from fact_transport f 
 join dim_date d
@@ -13,7 +14,8 @@ order by district;
 
 
 # 2. How does the distribution of vehicles vary by vehicle class (MotorCycle, MotorCar, AutoRickshaw, Agriculture) across different
-# districts? Are there any districts with a predominant preference for a specific vehicle class? Consider FY 2022 for analysis.
+districts? Are there any districts with a predominant preference for a specific vehicle class? Consider FY 2022 for analysis.
+
 select district, fiscal_year, 
 sum(vehicleClass_MotorCycle) as 'Motor_cycle', 
 sum(vehicleClass_MotorCar) as 'Motor_car', 
@@ -28,7 +30,7 @@ where fiscal_year = 2022
 group by district;
 
 # 3. List down the top 3 and bottom 3 districts that have shown the highest and lowest vehicle sales growth during FY 2022 compared to FY
-# 2021? (Consider and compare categories: Petrol, Diesel and Electric)
+2021? (Consider and compare categories: Petrol, Diesel and Electric)
 
 # Top 3 #
 
