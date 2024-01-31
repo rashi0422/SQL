@@ -1,1 +1,13 @@
 Financial Analysis project
+
+## create a function for a Fiscal year#
+CREATE DEFINER=`root`@`localhost` FUNCTION `get_fiscal_year`(
+    Calendar_date date
+) RETURNS int
+    DETERMINISTIC
+BEGIN
+      declare fiscal_year INT;
+      SET fiscal_year = YEAR (date_add(calendar_date, interval 4 month));
+RETURN fiscal_year;
+END
+
