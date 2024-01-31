@@ -1,0 +1,10 @@
+As a product owner, I want to generate a report of individual product sales(aggregate monthly basis at the product code level) for croma India customer for FY = 2021 
+so that i track individual product sales and run further product analytics on it is excel.
+
+The report should have the following fields.
+1. month
+2. product name 
+3. variant 
+4. sold quantity 
+5. gross price per items
+6. gross price total
